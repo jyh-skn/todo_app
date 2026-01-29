@@ -4,9 +4,13 @@ import streamlit as st
 st.markdown(
     """
     <style>
-    .st-emotion-cache-1frkdi4 p{
+    .st-emotion-cache-1frkdi4 
+    p {
         margin-top: 7px;
     }
+    del {
+        color: #DCDCDC;
+    } 
     </style>
     """,
     unsafe_allow_html=True
@@ -82,3 +86,12 @@ if st.session_state.todos:
 else:
     st.write('할일 추가')
 
+# pip list하면 현재 가상환경(pystudy_env)에 있는 도구들(패키지들)을 알 수 있음.
+# streamlit에 배포하기 위해 github에 올릴 때, requirements.txt로 만들어, push해줘야 함.
+# pip list --format=freeze > requirements.txt
+# 만약 충돌이 나는 경우,
+#   1) requirements.txt 중에서 win 검색 -> window 환경에서만 적용 -> streamlit 배포 환경은 linux이기 때문에 충돌
+#       1. pywin32==311
+#       2. pywinpty=2.0.15
+#       3. win_inet_pton==1.1.0
+#   2) LLM을 활용해서 해당 라이브러리에서 적합한 버전으로 수정&삭제하면 배포가능
