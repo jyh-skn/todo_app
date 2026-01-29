@@ -5,12 +5,14 @@ st.markdown(
     """
     <style>
     .st-emotion-cache-1frkdi4 p{
-        margin-top: 6.5px;
+        margin-top: 7px;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
+
+st.title('☑️TO-DO☑️')
 
 class Todo:
     def __init__(self, task: str, done: bool = False):
@@ -66,17 +68,17 @@ st.text_input('새로운 할일 추가', key='new_task', on_change=add_todo)  # 
 
 if st.session_state.todos:
     for i, todo in enumerate(st.session_state.todos):
-        checked = st.checkbox(
-            label=f"{i + 1} 번째 todo: {todo}",
-            key=f"todo_{i}"
-        )
+        # checked = st.checkbox(
+        #     label=f"{i + 1} 번째 todo: {todo}",
+        #     key=f"todo_{i}"
+        # )
 
         # st.write(f'{i}번째 todo => {todo}')
         col1, col2 = st.columns([0.1, 0.9]) # 비율은 취향껏
         col1.checkbox(f'{i + 1}', value=todo.get_done(), key=f'done_{i}', on_change=togle_done, args=(i, ))
         col2.markdown(f'~~{todo.get_task()}~~' if todo.get_done() else todo.get_task())
 
-        st.divider()
+        # st.divider()
 else:
     st.write('할일 추가')
 
